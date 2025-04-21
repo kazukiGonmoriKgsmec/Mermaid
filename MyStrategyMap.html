@@ -1,4 +1,17 @@
-flowchart BT
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Kazuki Mermaid Strategy</title>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+</head>
+<body>
+  <h2>権守一城中小企業診断士事務所戦略マップ</h2>
+  <pre class="mermaid">
+　flowchart BT
 
 %% ===== Outcome =====
 subgraph Outcome
@@ -50,13 +63,13 @@ subgraph Process
   %% 顧問KPI行動
   subgraph 顧問KPI行動
     L[小説投稿月2本] -->|1話で4人| I
-    N[登壇月1回] -->|1回で4人| K
     M[新しい場へ月2回] -->|1回で4人| J
+    N[登壇月1回] -->|1回で4人| K
   end
 
   %% スポットKPI行動
   subgraph スポットKPI行動
-    Qiita[Qiitaに月7本投稿] -->|1本で4人記憶| QiitaContributions
+    QiitaPostAction[Qiitaに月7本投稿] -->|1本で4人記憶| QiitaContributions
   end
 
   %% 新規事業KPI行動
@@ -65,16 +78,3 @@ subgraph Process
   end
 
 end
-
-%% ===== Input =====
-subgraph Input
-  理論[経営理論の深堀り]
-  体力[体力つくり]
-  Salesforce[Salesforce知識の効果的な追跡]
-
-end
-
-理論-->L
-理論-->N
-体力-->M
-Salesforce-->Qiita

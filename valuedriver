@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>バリュードライバーツリー</title>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2em;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      text-align: center;
+    }
+    .mermaid {
+      background: white;
+      padding: 1em;
+      border: 1px solid #ccc;
+      border-radius: 0.5em;
+    }
+  </style>
+</head>
+<body>
+  <h1>バリュードライバーツリー</h1>
+  <div class="mermaid">
+graph RL
+
+  限界利益率[限界利益率] -->|×| 限界利益[限界利益]
+  売上高[売上高] -->|×| 限界利益
+
+  限界利益 -->|−| 固定費[固定費]
+  固定費 -->|＝| 営業利益[営業利益]
+
+  限界利益率 -->|＝| 販売構成比[販売構成比]
+  限界利益率 -->|＝| 商品別粗利率[商品別粗利率]
+
+  販売構成比 -->|↑| 営業担当者の提案行動[営業担当者の提案行動]
+  商品別粗利率 -->|↑| 商品ミックス戦略[商品ミックス戦略]
+
+  売上高 -->|＝| 単価[単価]
+  売上高 -->|＝| 販売数量[販売数量]
+
+  単価 -->|↑| 価格設定ポリシー[価格設定ポリシー]
+  販売数量 -->|↑| 顧客ニーズ対応[顧客ニーズ対応]
+  </div>
+</body>
+</html>

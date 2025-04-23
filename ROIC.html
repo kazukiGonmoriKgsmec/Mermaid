@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ROICバリュードライバーツリー</title>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2em;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      text-align: center;
+    }
+    .mermaid {
+      background: white;
+      padding: 1em;
+      border: 1px solid #ccc;
+      border-radius: 0.5em;
+    }
+  </style>
+</head>
+<body>
+  <h1>ROIC バリュードライバーツリー</h1>
+  <div class="mermaid">
+graph RL
+
+  NOPAT[NOPAT（税引後営業利益）] -->|÷| ROIC[ROIC（投下資本利益率）]
+  投下資本[投下資本（使用資産合計）] -->|÷| ROIC
+
+  EBIT[EBIT（営業利益）] -->|×| NOPAT
+  税引後率[1 − 実効税率] -->|×| NOPAT
+
+  売上総利益[売上総利益（PL）] -->|＋| EBIT
+  販管費[販管費（PL）] -->|−| EBIT
+
+  売上高[売上高（PL）] -->|＋| 売上総利益
+  売上原価[売上原価（PL）] -->|−| 売上総利益
+
+  単価 -->|×| 売上高
+  数量 -->|×| 売上高
+
+  原材料費 -->|＋| 売上原価
+  製造人件費 -->|＋| 売上原価
+  製造間接費 -->|＋| 売上原価
+
+  営業人件費 -->|＋| 販管費
+  販促費 -->|＋| 販管費
+  一般管理費 -->|＋| 販管費
+
+  運転資本[運転資本（BS）] -->|＋| 投下資本
+  固定資産[有形・無形固定資産（BS）] -->|＋| 投下資本
+
+  売掛金[売掛金（BS）] -->|＋| 運転資本
+  棚卸資産[棚卸資産（BS）] -->|＋| 運転資本
+  買掛金[買掛金（BS）] -->|−| 運転資本
+
+  有形固定資産 -->|＋| 固定資産
+  無形固定資産 -->|＋| 固定資産
+  </div>
+</body>
+</html>

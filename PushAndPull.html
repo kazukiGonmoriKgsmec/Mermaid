@@ -1,0 +1,67 @@
+graph LR
+  %% ========= 起点 =========
+  MFG["棺メーカー<br>(本社)"]:::top
+
+  %% ========= プッシュ戦略 =========
+  subgraph PushDept["営業部門（プッシュ）"]
+    direction TB
+    P1["売り込み訪問"]:::push
+    P2["展示キット"]:::push
+    P3["報奨金<br>(¥2,000/本)"]:::push
+    P4["トークマニュアル"]:::push
+    P1 --> P2
+    P1 --> P3
+    P1 --> P4
+  end
+
+  %% ========= ハイブリッド連携（中央） =========
+  subgraph Hyb["ハイブリッド連携"]
+    direction TB
+    Feedback1["イベントの声 → 営業資料"]:::hyb
+    Feedback2["SNS人気棺 → 売込重点"]:::hyb
+  end
+
+  %% ========= プル戦略 =========
+  subgraph PullDept["イベント企画（プル）"]
+    direction TB
+    E1["終活イベント"]:::pull
+    E2["納棺体験"]:::pull
+    E3["共感獲得"]:::pull
+    E4["指名買い・文化醸成"]:::pull
+    E1 --> E2 --> E3 --> E4
+  end
+
+  %% ========= 成果・リスク =========
+  Sell["セルスルー増加"]:::success
+  Risk["チャネルスタッフィング<br>(在庫リスク)"]:::risk
+
+  %% ====== データフロー ======
+  E2 -- 体験データ --> Feedback1
+  Feedback1 --> P4
+
+  E3 -- 人気データ --> Feedback2
+  Feedback2 --> P2
+
+  P2 --> Sell
+  P3 --> Sell
+  P4 --> Sell
+  E4 --> Sell
+
+  P3 -.-> Risk
+  %% 負の副作用は破線 ↑
+
+  %% ====== 部門接続 ======
+  MFG --> PushDept
+  MFG --> PullDept
+
+  %% ハイブリッドを中央に固定するための不可視エッジ
+  PushDept -.-> Hyb
+  Hyb -.-> PullDept
+
+  %% ========= スタイル定義 =========
+  classDef top     fill:#ffffff,stroke:#333,stroke-width:2px;
+  classDef push    fill:#d0e7ff,stroke:#337ab7;
+  classDef pull    fill:#f6e1ff,stroke:#a333a8;
+  classDef hyb     fill:#fff4ce,stroke:#cc9900;
+  classDef risk    fill:#ffd6d6,stroke:#c00;
+  classDef success fill:#d4f4c3,stroke:#228b22;

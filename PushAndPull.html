@@ -1,3 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>プッシュ＆プル戦略</title>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2em;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      text-align: center;
+    }
+    .mermaid {
+      background: white;
+      padding: 1em;
+      border: 1px solid #ccc;
+      border-radius: 0.5em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Fプッシュ＆プル戦略</h1>
+  <div class="mermaid">
+
 graph LR
   %% ========= 起点 =========
   MFG["棺メーカー<br>(本社)"]:::top
